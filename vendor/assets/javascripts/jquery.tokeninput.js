@@ -263,7 +263,7 @@ $.TokenList = function (input, url_or_data, settings) {
             token_list.addClass($(input).data("settings").classes.focused);
         })
         .blur(function () {
-            hide_dropdown();
+            setTimeout(hide_dropdown, 10)
 
             if ($(input).data("settings").allowFreeTagging) {
               add_freetagging_tokens();
@@ -849,6 +849,11 @@ $.TokenList = function (input, url_or_data, settings) {
                     select_dropdown_item($(event.target).closest("li"));
                 })
                 .mousedown(function (event) {
+                    add_token($(event.target).closest("li").data("tokeninput"));
+                    hidden_input.change();
+                    return false;
+                })
+                .click(function (event) {
                     add_token($(event.target).closest("li").data("tokeninput"));
                     hidden_input.change();
                     return false;
