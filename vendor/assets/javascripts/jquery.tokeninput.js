@@ -263,6 +263,11 @@ $.TokenList = function (input, url_or_data, settings) {
             token_list.addClass($(input).data("settings").classes.focused);
         })
         .blur(function () {
+            if(selected_dropdown_item) {
+                add_token($(selected_dropdown_item).data("tokeninput"));
+                hidden_input.change();
+            }
+            
             setTimeout(hide_dropdown, 10)
 
             if ($(input).data("settings").allowFreeTagging) {
