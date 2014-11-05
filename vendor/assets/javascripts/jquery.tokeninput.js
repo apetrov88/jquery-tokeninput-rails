@@ -278,6 +278,7 @@ $.TokenList = function (input, url_or_data, settings) {
             token_list.removeClass($(input).data("settings").classes.focused);
         })
         .bind("keyup keydown blur update", resize_input)
+        .keyup(function (event) { setTimeout(function(){do_search();}, 5); }) // added line
         .keydown(function (event) {
             var previous_token;
             var next_token;
